@@ -2,6 +2,8 @@
 const notesContainer = document.querySelector("#notes-container");
 const noteInput = document.querySelector("#note-content");
 const addNoteBtn = document.querySelector(".add-note");
+const searchInput = document.querySelector("#search-input");
+const exportBtn = document.querySelector("#exports-notes");
 
 //Funções
 function showNotes(){
@@ -75,6 +77,13 @@ function createNote(id, content, fixed){
     element.appendChild(duplicateIcon);
 
     // Eventos do elemento
+    element.querySelector("textarea").addEventListener("keyup",(e) => {
+
+        const noteContent = e.target.value;
+
+        updateNote(id, noteContent);
+    })
+
     element.querySelector(".bi-pin").addEventListener("click", ()=>{
         toggleFixNote(id);
     });
@@ -128,6 +137,17 @@ function copyNote(id){
     notes.push(noteObject);
     saveNotes(notes);
 }
+
+function updateNote(id, newContent){
+
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+
+    targetNote.content = newContent;
+
+    saveNotes(notes);
+}
 //Local storage
 function getNotes(){
     const notes = JSON.parse(localStorage.getItem("notes") || "[]");
@@ -139,9 +159,64 @@ function getNotes(){
 function saveNotes(notes){
     localStorage.setItem("notes",JSON.stringify(notes));
 }
+function searchNotes(search){
 
+    const searchResults = getNotes().filter((note)=> ((note.content).toLowerCase()).includes(search.toLowerCase())
+    );
+
+    if(search !== ""){
+
+        cleanNotes();
+
+        searchResults.forEach((note) =>{
+            const noteElement = createNote(note.id,note.content, note.fixed);
+            notesContainer.appendChild(noteElement);
+        });
+        return;
+    }
+
+    cleanNotes();
+    showNotes();
+}
+
+function exportData(){
+
+    const notes = getNotes();
+    //deixando as notas no padrão csv
+    const csvString = [
+        ["ID", "Conteúdo" , "Fixado?"],
+        ...notes.map((note) => [note.id, note.content, note.fixed])
+    ].map((e) => e.join(",")).join("\n");
+
+    const element = document.createElement("a");
+
+    element.href = "data:text/csv;charset=utf8,"+ encodeURI(csvString);
+
+    element.target = "_blank";
+
+    element.download = "notes.csv";
+
+    element.click();
+
+}
 //Eventos
 addNoteBtn.addEventListener("click",()=>addNote());
+
+searchInput.addEventListener("keyup", (e) =>{
+    const search = e.target.value;
+
+    searchNotes(search);
+});
+
+noteInput.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter"){
+        addNote();
+    }
+});
+
+exportBtn.addEventListener("click",()=>{
+    exportData();
+});
 
 //Inicialização
 showNotes();
