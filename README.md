@@ -25,7 +25,7 @@ Aplicação de **bloco de notas** desenvolvida com **HTML, CSS e JavaScript**, q
 
 ## Adicionando nota
 
-**A nota é adionada possui o conteúdo que foi cadastrado, e botões para fixar, excluir ou copiar a nota. Para editar o conteúdo, basta clicar e adicionar o novo texto**
+**A nota é adionada possui o conteúdo que foi cadastrado, e botões para fixar, excluir ou copiar a nota. Para editar o conteúdo, basta clicar e adicionar o novo texto. As notas cadastradas são salvas na LocalStorage**
 
 <img width="1359" height="645" alt="2" src="https://github.com/user-attachments/assets/c197fb0b-8176-4ebb-ba1c-f0fcb0447722" />
 
@@ -40,6 +40,19 @@ Aplicação de **bloco de notas** desenvolvida com **HTML, CSS e JavaScript**, q
 **A funcionalidade de pesquisa de nota exibe as notas que possuem o conteúdo digitado, independentemente se ele foi digitado com letras maiúsculas ou minúsculas**
 
 <img width="1363" height="639" alt="4" src="https://github.com/user-attachments/assets/590cb59a-3387-434f-8851-95048f1e402d" />
+
+## Botão para exportação de arquivo CSV
+
+**O botão de exportar para CSV converte o conteúdo salvo na LocalStorage em um arquivo CSV**
+
+<img width="1365" height="637" alt="5" src="https://github.com/user-attachments/assets/66d111df-918e-4e48-a9b0-f6463766cfc8" />
+
+## Responsividade
+
+**O projeto foi adaptado para telas menores**
+
+<img width="309" height="555" alt="6" src="https://github.com/user-attachments/assets/cd8da48a-f33b-4b63-89a1-9bf255e44962" />
+
 
 
 
