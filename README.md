@@ -81,27 +81,18 @@ Neste projeto foram praticados diversos conceitos essenciais de JavaScript:
 * Atualização em tempo real
 * Organização de código
 
-## 📂 Estrutura do Projeto
-
-```bash id="yloc5h"
-📁 notes-app
- ┣ 📄 index.html
- ┣ 📄 style.css
- ┗ 📄 script.js
-```
 
 ## ▶️ Como Executar
 
 1. Clone este repositório:
 
-```bash id="0syk9l"
-git clone https://github.com/seu-usuario/notes-app.git
+```bash https://github.com/vitVasconcelos/dev-notes.git
 ```
 
 2. Acesse a pasta do projeto:
 
-```bash id="5b7lfd"
-cd notes-app
+```bash
+cd dev-notes
 ```
 
 3. Abra o arquivo `index.html` no navegador.
